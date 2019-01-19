@@ -60,7 +60,7 @@
 % what's the problem ?
 Modern online learning environments rely on forums and chat rooms for their students to exchange information about a subject, get help from peers and tutors or socialize.  When attendance is massive --as currently in popular \glspl{mooc}--, or if the course session spread over a long period of time, the forums' messages rapidly become intractable.  Therefore, the mass of information is devalued and can even be a burden on the learners and tutors as the former struggle to find adequate peers to support learning collectively and the latter are overwhelmed by numbers.
 
-Efforts have been made to help tutors analyzes the students' exchanges in forums but, as we will see in section~\ref{section:3}, these analyzes are often limited to a small set of individual or are topic specific.  Also, the analysis usualy takes place at the end of the learning session and does not allow ``real-time'' guidance.
+Efforts have been made to help tutors analyzes the students' exchanges in forums but, as we will see in section~\ref{section:3}, these analyzes are often limited to a small set of individual or are topic specific.  Also, the analysis usually takes place at the end of the learning session and does not allow ``real-time'' guidance.
 % They could be improved by adding a temporal dimension and refining the semantic dimension.
 
 Meanwhile, interactions taking place in forums account for essential aspects of the socio-constructivism learning theory.  Vygotsky emphasizes the importance of discussions as they take learners at the fringe of their knowledge domain, the proximal development zone.  There, they push back their knowledge barrier and build new knowledge to fill the gaps spotted during discussions.  Therefore, facilitating forums' usages in ways that encourage discussions and collective actions should theoretically be beneficial to the learning experience of all actors.  But as far as we know, there is yet no method to come up with a generic and dynamic way to explore the social interactions taking place in \gls{lms}.  Learners often struggle to build a sense of belonging \citep{Khalil2014} and tutors have difficulties supporting effective collective actions \citep{Zheng2015}.  The learning potential brought by the popularization of \gls{lms} is jeopardized.
@@ -112,7 +112,7 @@ So for simplicity, we will call indifferently ``forum'' any virtual discussion s
 
 \subsection{Collective Dynamics}
 
-% what do you mean by colletive dynamics
+% what do you mean by collective dynamics
 Collective dynamics are time-dependent interactions spurring for the messages co-occurrence in the forums' discussions.
 
 \paragraph{Elementary dynamics}
@@ -196,7 +196,7 @@ We review previous works pertaining to collective actions and those about suppor
 
 
 \subsection{Analyzing collective actions}
-Studies that consider collaboration usualy try to identify the intentions by studying the student's behavior and the message publications.
+Studies that consider collaboration usually try to identify the intentions by studying the student's behavior and the message publications.
 
 
 \paragraph{Detecting collective action}  In a 250 strong \gls{col}, \cite{Rehm2015} compare on-task users, those showing engagement and high performance, with off-task users.  They use questionnaires to relate the different behaviors to the users' hierarchical position in the \gls{col}.  They compared the actors' social network position and their engagements in learning discussions.  They found a positive correlation both dimension, therefor the author did not invalidate their hypothesis that the social position influenced the learning behavior. % With \gls{sna} tools this results can tested in larger online networks.
@@ -238,7 +238,7 @@ Visualization as supporting tools have been used successfully in teaching contex
 Generally, as \cite{Qu2015} note, there is a  ``need to develop both advanced data mining methods to reveal patterns from MOOC data and visualization techniques to convey the analytical results to end users and allow them to freely explore the data by themselves''.
 With VisForum, \cite{Fu2017} answer  \cite{Qu2015}'s call.  VisForum  (Figure.~\ref{fig:fu}) provide a visual analytic system to interactively explore the forum of a \gls{lms}.  The complex interface helps the tutor group users and compare them to gain insights on the general forum's dynamic in terms of structure but also it terms of sentiment analysis.
 
-Convis from \cite{Hoque2016} is an explorative visualization that also satisfy \cite{Bull2016}'s recommendation for negotiable user models (Figure.~\ref{fig:convis}).  It is a forum exploration tool designed around a topic model that evolves with users' feedback.   It facilitates finding insightful messages from discussions
+Convis from \cite{Hoque2016} is an exploratory visualization that also satisfy \cite{Bull2016}'s recommendation for negotiable user models (Figure.~\ref{fig:convis}).  It is a forum exploration tool designed around a topic model that evolves with users' feedback.   It facilitates finding insightful messages from discussions
 crammed with hundreds.
 Finally, \cite{Guo2017} propose TieVis, an original scalable visualization specifically tailored to track explore and analyze dynamics in interpersonal links, like those we could have between the actors mentioned in the previous section.
 
@@ -265,7 +265,7 @@ Finally, \cite{Guo2017} propose TieVis, an original scalable visualization speci
     Hangouts (2018) &  &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  \\ [.2cm]
     \gls{vuci} & \multicolumn{1}{r}{5} & \multicolumn{1}{r}{7297} & 96 & 327 &  \multicolumn{1}{l}{s} & G \& S & -  \\   \bottomrule
   \end{tabular}
-  \caption{\label{tab:datasets}List of datasets and courses that we use to experiment our \gls{ldb}.  \sup{i}The forum structure is given by the existence of different forum types: Weekly (W), General (G), Technical Support (S), Thematic (T) or Assignment (A) related.  \sup{ii}Extra information is often available, such as messages up votes (V), comments (C), subscription (Sub.) or attachment (Att.).  \sup{iii}When data was scrapped, the dates were in humanized format (eg. 6 month ago, 23 minutes ago), therefore the precision varies with posts' ages.  Recent posts can be compared with greater precision than older ones. We give the intervals in which the precision varies in hours (h), days(d), month (m) and year (y).}
+  \caption{\label{tab:datasets}List of datasets and courses that we use to experiment our \gls{ldb}.  \sup{i}The forum structure is given by the existence of different forum types: Weekly (W), General (G), Technical Support (S), Thematic (T) or Assignment (A) related.  \sup{ii}Extra information is often available, such as messages up votes (V), comments (C), subscription (Sub.) or attachment (Att.).  \sup{iii}When data was scrapped, the dates were in humanized format (e.g. 6 month ago, 23 minutes ago), therefore the precision varies with posts' ages.  Recent posts can be compared with greater precision than older ones. We give the intervals in which the precision varies in hours (h), days(d), month (m) and year (y).}
 \end{table*}
 
 
@@ -336,7 +336,7 @@ As we said earlier, deducting the causal relationship between messages is diffic
 
 \paragraph{Explicit relationship's strength}
 
-% We define the causal interaction's strength $I$ between two messages as the measure of interaction taking in account the intention of the exchange.  It is a function of $s$ and $r$, where $s$ is the implicite relationship's strengh, independent of the intention.  It is based on topic, time and actor closeness. And $r$ is the required message correlation, defined by as the observer's evaluation of how much implicite relationship is required to explicit it.  For all $s \in ]0;1[ $, $I$ should satisfy:
+% We define the causal interaction's strength $I$ between two messages as the measure of interaction taking in account the intention of the exchange.  It is a function of $s$ and $r$, where $s$ is the implicit relationship's strength, independent of the intention.  It is based on topic, time and actor closeness. And $r$ is the required message correlation, defined by as the observer's evaluation of how much implicit relationship is required to explicit it.  For all $s \in ]0;1[ $, $I$ should satisfy:
 % $\lim\limits_{r \to 0} I(s,r) = 1$ and $\lim\limits_{r \to 1} I(s,r) = 0$.
 
 % \begin{align*}
@@ -406,7 +406,7 @@ This was a successful test to sketch our firsts visualizations, but the FFL data
 
 The hangouts dataset is slightly different from the other datasets in that it is less structured.  It comes from chat rooms and not forums.  Figure~\ref{fig:hgconv} displays 6~274 messages from one chat room, gathering several threads of exchanges between the \gls{vuci}'s administration and their tutors, from March 2018 to December 2018.
 
-We started from an manual, but automatable, export of Google's hangouts services.  It gave us a JSON file that we preprocessed in python and fed to d3, a visualization javascript library, via a standalone Django web application.  We built a \gls{ldb}, testing interactive features such as zooming, panning, data point selection.
+We started from an manual, but automatable, export of Google's hangouts services.  It gave us a JSON file that we preprocessed in python and fed to d3, a visualization JavaScript library, via a standalone Django web application.  We built a \gls{ldb}, testing interactive features such as zooming, panning, data point selection.
 The figure's pane (a) contains a bird's eye view of all the messages.  Users are represented vertically, in the middle,  with their names.  On the extreme left is an histogram of message count for each user. On the left, along the time axis we plotted the messages as discs whose areas are proportional to the messages' length. Activating the mouse wheel while on the time axis zoom in and out.  Finally, message's content pops up when the cursor hovers a data point, giving full access to the most detailed information.  In the right pane, we zoomed on the 2 hours period that is framed in red, to illustrate how detailed information was accessed.
 
 In this investigation we did not include the \gls{sna} and \gls{nlp} analysis because our objective was the visualization of a large dataset and the handling of the scaling problem when content was involved.  It proved that our technology choices were sound. We transformed that dataset of several thousands messages,  from the JSON file to the HTML rendering, in a few seconds.
