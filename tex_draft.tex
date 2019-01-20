@@ -370,70 +370,65 @@ Structurally, recurrent actors form cycles in the sociogram.  For example, in Fi
 \begin{figure}[t]
   \includegraphics[width=.5\textwidth]{images/pipeline.png}
   \small{
-    \caption{\label{fig:pipeline} Data Analysis cycle. Regular updates or extraction from the \gls{lms} feed data repositories used processed to a unified model.  Then \gls{sna} and \gls{nlp} techniques are used to generate the actor-actor and topic-topic networks dynamics.  The visual engine use that preprocess data to generate interactive visualizations served to the \gls{lms} interface via common APIs.  Finally the observe can interact wit the visualizations and explore the topic-topic dynamics.
+    \caption{\label{fig:pipeline} Data Analysis cycle.
+      %Regular updates or extraction from the \gls{lms} feed data repositories used processed to a unified model.  Then \gls{sna} and \gls{nlp} techniques are used to generate the actor-actor and topic-topic networks dynamics.  The visual engine use that preprocess data to generate interactive visualizations served to the \gls{lms} interface via common APIs.  Finally the observe can interact wit the visualizations and explore the topic-topic dynamics.
     }}
 \end{figure}
 
 We now introduce three visualizations from our work in progress.  They were made separately, each testing some elements of the global conception model presented in Figure~\ref{fig:pipeline}.
 
 
-\begin{figure*}[t]
-  \includegraphics[width=\textwidth]{images/dynco.png}
+\begin{figure}[t]
+  \includegraphics[width=.5\textwidth]{images/dynco_portrait.png}
   \small{
     \caption{\label{fig:dynco}
-      Visualizations from the FFL dataset.  On the left, a comparison of an actor on-task and off-task activity obtained by tracking the presence or absence of significant interaction with the interface.  On the right, is the comparison of two users activity along the time axis.
+      Visualizations from the FFL dataset.
     }}
-\end{figure*}
+\end{figure}
 
 \subsection{Moodle dataset}
-The work with FFL dataset tackled some issues with integrating data from a Moodle database.  We then used that dataset to sketch our first visualizations, emphasizing the importance of the users' activities.
+% The work with FFL dataset tackled some issues with integrating data from a Moodle database.
+We used the FFL dataset to sketch our first visualizations.  Our Moodle dataset has the particularity to contains detailed information about the actors' activity type and duration.  It enabled us to distinguish the users' active time from their idle times.  With that information we came up with the visualizations of Figure~\ref{fig:dynco}, built as part of a standalone web application.  Once we selected a user, we see the visualizations corresponding to his active time.   The top chart presents, in yellow, the total time spent in the forums for a user, day per day and compares it with his non idle activity time, shown in blue.  To handle the scaling problem, we implemented a monthly, weekly and daily based grouping criteria.  On the lower chart, we compared the activity time of two users.  We see that, although they display similar activity patterns over time, one is generally more active than the other.
 
-Our Moodle dataset has the particularity to contains detailed information about the actors' messages, activity types,  attachment file up and downloads,  messages' timestamp and views count.  It enabled us to distinguish the users' active time from their idle times.  With that information we came up with the visualizations of Figure~\ref{fig:dynco}, built as part of a standalone web application.  Once we selected a user we see the visualizations corresponding to his activities.   The left chart presents, in yellow, the total time spent in the forums, day per day, for all users and compares it to the selected user's activity shown in blue.  To handle the scaling problem, we implemented a monthly, weekly and daily based grouping criteria.  On the right chart, we compared the activity time of two users.  We see that, although they display similar activity patterns over time, one is generally more active than the other.
+This was a successful test to sketch our firsts visualizations, but the FFL dataset lacked content and its size did not create a huge monitoring problem for the tutors.  Albeit, this dataset is interesting because it emphasize the importance of the activity type.  The following step is to scale up with a bigger dataset that includes content.
 
-This was a successful test to sketch our firsts visualizations, but the FFL dataset lacked content and its size did not create a huge monitoring problem for the tutors.  Albeit, this dataset was interesting to emphasize the importance of the activity types.  The following step is to scale up with a bigger dataset that includes content.
-
-
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
-  \includegraphics[width=\textwidth]{images/uvci_paysage_flou}
+  \includegraphics[width=.5\textwidth]{images/uvci_portrait}
   \small{
     \caption{\label{fig:hgconv}
       Detail of \gls{vuci} conversation taking place in 2 hours.  Each circle is a message, and hovering over them brings up its content.  The circle's size is proportional to their content's length.  Message are layered vertically by actors.  On the left is an indication of the actors total messages count.
     }}
-\end{figure*}
+\end{figure}
 
 \subsection{Hangouts dataset}
 
-The hangouts dataset is slightly different from the other datasets in that it is less structured.  It comes from chat rooms and not forums.  Figure~\ref{fig:hgconv} displays 6~274 messages from one chat room, gathering several threads of exchanges between the \gls{vuci}'s administration and their tutors, from March 2018 to December 2018.
+The hangouts dataset is slightly different from the other datasets. It is less structured because it comes from chat rooms and not forums.  Figure~\ref{fig:hgconv} displays 6~274 messages from one chat room, gathering several threads of exchanges between the \gls{vuci}'s administration and their tutors, from March 2018 to December 2018.
 
-We started from an manual, but automatable, export of Google's hangouts services.  It gave us a JSON file that we preprocessed in python and fed to d3, a visualization JavaScript library, via a standalone Django web application.  We built a \gls{ldb}, testing interactive features such as zooming, panning, data point selection.
-The figure's pane (a) contains a bird's eye view of all the messages.  Users are represented vertically, in the middle,  with their names.  On the extreme left is an histogram of message count for each user. On the left, along the time axis we plotted the messages as discs whose areas are proportional to the messages' length. Activating the mouse wheel while on the time axis zoom in and out.  Finally, message's content pops up when the cursor hovers a data point, giving full access to the most detailed information.  In the right pane, we zoomed on the 2 hours period that is framed in red, to illustrate how detailed information was accessed.
+We started from an manual, but automatable, export of the Google's hangouts services.  It gave us a JSON file that we preprocessed in python and fed to d3, a visualization JavaScript library, via a standalone Django web application.  We built a \gls{ldb}, testing on that larger dataset, interactive features such as zooming, panning, data point selection.
+The figure's pane (a) contains a bird's eye view of all messages.  Users are represented vertically, in the middle,  with their names.  On the left is an histogram of message count for each user. On the right, along the time axis, we plotted the messages as discs whose areas are proportional to the messages' length. Activating the mouse wheel while on the time axis zoom in and out.  Bellow, is the 3 hours period framed in red, zoomed.  It shows a message pop-up, with full detail, activated by the mouse hovering a data point. 
 
-In this investigation we did not include the \gls{sna} and \gls{nlp} analysis because our objective was the visualization of a large dataset and the handling of the scaling problem when content was involved.  It proved that our technology choices were sound. We transformed that dataset of several thousands messages,  from the JSON file to the HTML rendering, in a few seconds.
+In this investigation we did not include the \gls{sna} and \gls{nlp} analysis because our objective was the visualization of a large dataset with content and the handling of the scaling problem.  It proved that our technology choices were sound. We transformed the dataset of several thousands messages,  from the JSON file to the HTML rendering, in a few seconds.
 But it also pin-pointed the importance to implement many interactive exploration functions to alleviate the scaling problem.  For examples, ways to quickly zoom on a few data points without loosing the overall picture, as well as ways to filter and order data point or axis labels, and also enabling more intricate communication between the different \gls{ldb}'s charts.
-In addition to all this, a major draw back to our visualization is that it did not yet take in account the final users.  Yet, we need to engage them in a co-construction process of the visualization if we want to increase the adoption rate, usability and impact of our final visualization.
-Finally, beside the defining the visual modalities we still need to test the collective activity indicator algorithm.
+In addition to all this, a major draw back to our visualization is that it did not take in account, yet, the final users.
+Finally, beside defining visual modalities, we still need to test the algorithm to compute the collective activity indicator.
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{images/evolution.png}
   \small{
     \caption{\label{fig:evolution}
-      At the top (a) is half of compound yearly actor-actor network built.  The three bottom images (a), (b) and (c) are closeup around actor 578 during the \nth{2}, \nth{3} and \nth{4} quarters of the year.  We can see how the network changes around him.  }}
+      At the top (a) is half of compound yearly actor-actor network.  The three bottom images (b), (c) and (d) are closeup around actor 642 during the quarters of the year. }}
 \end{figure*}
 
 \subsection{Coursera's dataset}
 
-We used the PP dataset from Coursera 2017 to investigate the construction of a collective activity indicator with \gls{sna} techniques.  We came up with a sociogram (Figure~\ref{fig:evolution}) illustrating an actor-actor dynamics.  Nodes are all learners.  We removed the tutors and the course's mentors to approach Dillenbourg's collaboration definition that we gave in Section~\ref{section:2}.  The users are linked based on their proximity to the previous-3 actors who published in the same discussion.  The arrows' width depends on the messages' timestamp closeness, \# of co-occurrences of the authors and the number of votes that the message collected.  We colored them by discussion, and order them by age, the oldest been given of darker colors.  This is an intermediate visualization that is used for analysis purposes and will not be presented to the end users for two reasons:
+We used the PP dataset from Coursera 2017 to investigate the construction of a collective activity indicator with \gls{sna} techniques.  We came up with the sociogram (Figure~\ref{fig:evolution}) illustrating an actor-actor dynamics.  Nodes are all learners.  We removed the tutors and the course's mentors to approach Dillenbourg's collaboration definition that we gave in Section~\ref{section:2}.  The users are linked based on their proximity to the previous-3 actors who published in the same discussion.  The arrows' width depend on the messages' timestamp closeness, \# of co-occurrences of the authors and the number of votes that the message collected.  We colored them by discussion, and order them by age, the oldest been the lightest.  This is an intermediate visualization that is used for analysis purposes and will not be presented to the end users for two reasons:
 \begin{inparaenum}[\itshape a\upshape)]
-\item it give abstruse information for someone that does not have access to the raw data,
+\item it gives abstruse information for someone that does not have access to the raw data,
 \item it represents the actors as nodes and as we noted in section~\ref{section:3}, we would rather have visualizations showing topics than persons.
 \end{inparaenum}
-We present it here to illustrate what the social network looks like, and because, zoomed and reduced to the three snapshots (b), (c), (d), representing three successive times range, it may be more comprehensible.
-
-In particular a detailed analysis shows that actor 642, circled in red, started by a receiving a message (a), then he engaged in several message exchanges noticeably with actors 641 and 640 and finally he was the one providing messages to others (d).
-
-It is not clear from the Figure~\ref{fig:evolution} if actor 642 was part of cycles.  Testing our hypothesis that actors in same cycles share a collective dynamic will be our next step.
+We present it to illustrate what a social network from our dataset looks like, and because, zoomed and reduced to the three snapshots (b), (c), (d), representing three successive yearly quarters, we distinguish an evolving pattern.  In particular a detailed analysis of actor 642, circled in red, show that he started to designate two other messages probably because they were meaningful to him (a), then he engaged in several message exchanges designating others' message meaningful as his where also bringing attention (c), and in the most recent quarter someone commented one of his earlier message (d).  It is not clear from the Figure~\ref{fig:evolution} if actor 642 was part of cycles.  Testing our hypothesis that actors in cycles share a collective dynamic is in our perspectives.
 
 \section{Perspectives and Conclusion}
 \label{section:6}
@@ -441,28 +436,22 @@ It is not clear from the Figure~\ref{fig:evolution} if actor 642 was part of cyc
 
 \subsection{Perspectives}
 
-The three test and visualizations we presented prepare further work to build:
-\begin{itemize}
-\item a collective activity indicator taking in account the social network structure and the content \gls{nlp} of messages,
-\item a visualization for that indicator
-\end{itemize}
+The three test and visualizations presented are preparing further work to build:
+\begin{inparaenum}[\itshape a\upshape)]
+\item a collective activity indicator taking in account the social network structure, the content of messages and their evolution in time,
+\item visualizations for that indicator.
+\end{inparaenum}
 
-To further our effort to find visual modalities for the indicator, we conducted a survey in July 2018 with a 48 tutors to introduce our project and start engaging them in a co-construction process.   27 were not satisfied or unsure about their current tools' effectiveness to monitor their students' work.   At the same time, 39 agreed or strongly agreed that ICTs could help their students collaborate and 40 that collaboration was important for learning.  Our perspective is in a second survey to ask them what kind of visual representation they would find useful to monitor the collective activities of their students.
+To further our effort to find visual modalities for the indicator, we conducted a small survey in July 2018 with a 48 tutors from the \gls{vuci} to introduce our project and start engaging them in a co-construction process.   27 were not satisfied or unsure about their current tools' effectiveness to monitor their students' work.  39 agreed or strongly agreed that ICTs could help their students better collaborate and 40 that collaboration was, indeed important for learning.  In a second survey, we plan to ask the tutors the kind of visual representation they would find useful to monitor the collective activities of their students, but also what dimensions of the relationships between messages they would like to leverage to explicit visually those relationships.  This is part of a co-construction approach that should engage the tutors, facilitating its adoption of our visualization while increasing its usability and impact.
 
-Our \gls{ldb}'s portability rests on the assumption that we will be able to extract periodically, every few minutes, hours or days, data from the main \gls{lms}.  This will not hold for all \glspl{lms}.  Furthermore, we hope to integrate our \gls{ldb} back in the main \gls{lms} using APIs.  It will necessitate proper authorizations that we do not yet have.
+Concerning the portability and validation of our pipeline stages (Figure~\ref{fig:pipeline}),  we will need to continue working with several datasets, extending our unified model to incorporate \gls{sna} and \gls{nlp} statistics for all datasets. The portability assumption rests on our capacity to extract periodically, every few minutes, hours or days, data from a main \gls{lms}.  Furthermore, we  will necessitate proper APIs authorizations to make our \gls{ldb} communicate effectively with the \gls{lms}.
 
-Concerning the ``implicit'' message correlation $s$, other options than those we propose exists.  We will have collect the tutors or the users preferences on the type of $s$ function that best suit their needs.  This will be part of the co-construction process of our \gls{ldb}.
-
-Concerning the visualizations' development, we need to implement on the same dataset the \gls{sna} started with the PP dataset (Figure~\ref{fig:evolution}), \gls{nlp} analysis and extend the exploration's functions experimented with the Hangout dataset (Figure~\ref{fig:hgconv}).
-
-Once our prototype fulfills all stages of the pipeline (Figure~\ref{fig:pipeline}), for the datasets we already have, our next step will be to test it with tutors from \gls{vuci}.  
-
-In the experiment with \gls{vuci}, we will certainly run into difficulties to process the \gls{vuci} content dataset because Ivorian french is not standard french and we will not be able to use, as is, common \gls{nlp} tools such as grammar parsers from Python's Nltk library.  But we hope to get promising feedback from the tutors about the usefulness of our prototype to monitor the collective actions of their students.
+%In the experiment with \gls{vuci}, we will certainly run into difficulties to process the \gls{vuci} content dataset because Ivorian french is not standard french and we will not be able to use, as is, common \gls{nlp} tools such as grammar parsers from Python's Nltk library.  But we hope to get promising feedback from the tutors about the usefulness of our prototype to monitor the collective actions of their students.
 
 \subsection{Conclusion}
-In this paper, we presented a model to detect collective activities from the forums' discussions.  We based our model on an internal message distance and an external parameter set by an observer.  Doing so, the collective dynamics that we measure is adaptable to the observer context and knowledge.  We avoid creating causal relationships between the messages, facilitating the portability of our approach to courses covering different domain and having significantly different populations.  For example, we suppose that an observer would only have to set his time requirement higher to observe interesting collective dynamics in a short course and set it lower if the course took several months.
-
-Our model is the continuation of recent works in the field of data analysis and data visualization.  \gls{la} is at a turning point where lots of attention is moving to support tools rather than fully automated learning solutions \citep{Kone2018,Baker2016}. We hope that this model will help tutors and, further, students discover the topic-topic dynamics in their \glspl{mooc} and support collectives activities so beneficial to learning.
+In this paper, we presented a model to detect collective activities from the forums' discussions.  We based our model on an implicit message relationship and an external parameter set by an observer to explicit that relationship.  Doing so we should facilitating the portability of our indicator to courses covering different domains, spanning various time periods and having different populations. % For example, we suppose that an observer would only have to set his time requirement higher to observe interesting collective dynamics in a short course and set it lower if the course took several months.
+\gls{la} is at a turning point where lots of attention is moving to support tools rather than fully automated learning solutions \citep{Kone2018,Baker2016}.
+Therefore, we started investigating ways to give a visual feed of the collective dynamics spurring from the \glspl{lms} forums, back to the tutors.  We illustrated with three visualizations our work in progress pushing for more data analysis and data visualization for learning.  We further hope that this work will help tutors and, eventually, students  discover the topic-topic dynamics in their \glspl{mooc} and support collectives activities, so beneficial to learning.
 
 \vfill 
 
